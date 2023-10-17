@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">SunnyWeather</string>
+    <string name="navigate_button">Navigate Button</string>
+    <string name="place_name">Place Name</string>
+    <string name="current_temperature">当前温度</string>
+    <string name="divider">|</string>
+    <string name="air_quality_index">当前空气质量指数</string>
+
 </resources>
