@@ -75,13 +75,15 @@
                 android:layout_height="wrap_content"
                 android:textColor="#000"
                 android:textSize="18sp"
-                android:contentDescription="@string/air_quality_index"
+                android:contentDescription="@string/air_quality_index" />
+
             <TextView
                 android:id="@+id/currentSky"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="#fff"
                 android:textSize="18sp" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -89,6 +91,7 @@
                 android:textColor="#fff"
                 android:textSize="18sp"
                 android:text="|" />
+
             <TextView
                 android:id="@+id/currentAQI"
                 android:layout_width="wrap_content"

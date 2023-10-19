@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -20,7 +21,8 @@ import com.sunnyweather.android.ui.theme.weather.WeatherActivity
 
 class PlaceFragment : Fragment() {
 
-    val viewModel by lazy { ViewModelProviders.of(this).get(PlaceViewModel::class.java) }
+    val viewModel by viewModels<PlaceViewModel>()
+//    val viewModel by lazy { ViewModelProviders.of(this).get(PlaceViewModel::class.java) }
 
     private lateinit var adapter: PlaceAdapter
 

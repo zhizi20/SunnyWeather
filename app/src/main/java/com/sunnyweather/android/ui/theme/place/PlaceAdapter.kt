@@ -7,13 +7,18 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.sunnyweather.android.R
+import com.sunnyweather.android.SunnyWeatherApplication.Companion.context
+import com.sunnyweather.android.databinding.ActivityMainBinding
+import com.sunnyweather.android.databinding.ActivityWeatherBinding
+import com.sunnyweather.android.databinding.FragmentPlaceBinding
 import com.sunnyweather.android.logic.model.Place
+import com.sunnyweather.android.ui.place.PlaceFragment
 import com.sunnyweather.android.ui.theme.weather.WeatherActivity
 
-class PlaceAdapter(private val fragment: Fragment, private val placeList: List<Place>) :
+
+class PlaceAdapter(private val fragment: PlaceFragment, private val placeList: List<Place>) :
     RecyclerView.Adapter<PlaceAdapter.ViewHolder>() {
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -21,7 +26,11 @@ class PlaceAdapter(private val fragment: Fragment, private val placeList: List<P
         val placeAddress: TextView = view.findViewById(R.id.placeAddress)
     }
 
+    private val mDrawerLayout: DrawerLayout? = null
+
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+
         val view = LayoutInflater.from(parent.context).inflate(R.layout.place_item, parent, false)
         val holder = ViewHolder(view)
         holder.itemView.setOnClickListener {
@@ -30,7 +39,13 @@ class PlaceAdapter(private val fragment: Fragment, private val placeList: List<P
             val activity = fragment.requireActivity()
 
             if (activity is WeatherActivity) {
-                activity.drawerLayout.closeDrawers()
+
+                val mDrawerLayout = activity.drawerLayout
+                mDrawerLayout.closeDrawers()
+
+
+//
+//                activity.drawerLayout.closeDrawers()
                 activity.viewModel.locationLng = place.location.lng
                 activity.viewModel.locationLat = place.location.lat
                 activity.viewModel.placeName = place.name
@@ -44,7 +59,7 @@ class PlaceAdapter(private val fragment: Fragment, private val placeList: List<P
                 fragment.startActivity(intent)
                 activity.finish()
             }
-            fragment.viewModel.savePlace(place)
+            fragment.viewModel.savePlace(place) // 将 fragment.viewModel 改为 viewModel
         }
         return holder
     }
